@@ -1,11 +1,14 @@
-const UserInfo = ({ name, bio, portfolioURL, social }: any) => {
+const UserInfo = ({ name, bio, portfolioURL, twitterUsername}: Props) => {
+  console.log(portfolioURL)
+  const info = (data: string) => {
+    return data ? data : "no info";
+  }
   return (
     <div className='inline-block'>
-      <div>Name: {name} name</div>
-      <div>Bio: {bio}</div>
-      <div>Portfolio: {portfolioURL}</div>
-      <div>Instagram: {social?.instagramUsername}</div>
-      <div>Twitter: {social?.twitterUsername}</div>
+      <div>Name: {info(name)} </div>
+      <div>Bio: {info(bio)}</div>
+      <div>Portfolio: {info(portfolioURL)}</div>
+      <div>Twitter: {info(twitterUsername)}</div>
     </div>
   );
 };
@@ -16,8 +19,5 @@ interface Props {
   name: string;
   bio: string;
   portfolioURL: string;
-  social: {
-    instagramUsername: string;
-    twitterUsername: string;
-  }
+  twitterUsername: string;
 }

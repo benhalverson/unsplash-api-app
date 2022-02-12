@@ -23,7 +23,7 @@ const ImageList = ({ images }: any) => {
             </p>
           
             <UserInfo
-              user={image.user.username}
+              name={image.user.username}
               bio={image.user.bio}
               portfolioURL={image.user.portfolioURL}
               twitterUsername={image.user.twitterUsername}
