@@ -45,8 +45,8 @@ const Home: NextPage = () => {
 
   const handleSubmit = (e: any) => {
     setSearch(e.target.value);
-    // getPhotos();
-    getMockedPhotos();
+    getPhotos();
+    // getMockedPhotos();
   };
 
   return (
