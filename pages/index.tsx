@@ -6,20 +6,29 @@ import ImageList from "../components/imageList";
 const Home: NextPage = () => {
   const [images, setImages] = useState<string[]>([]);
   const [search, setSearch] = useState("");
-  const getPhotos = async (): Promise<[]> => {
-    const response = await axios.get("https://api.unsplash.com/search/photos", {
-      headers: {
-        Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
-      },
-      params: {
-        query: `${search}`,
-      },
-    });
-    const photos = response.data.results;
-    if (photos) {
-      setImages(photos);
+
+  const getPhotos = async () => {
+    try {
+      const response = await axios.get(
+        "https://api.unsplash.com/search/photos",
+        {
+          headers: {
+            Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
+          },
+          params: {
+            query: `${search}`,
+          },
+        }
+      );
+
+      const photos = response.data.results;
+      if (photos) {
+        setImages(photos);
+      }
+      return photos;
+    } catch (error: any) {
+      console.error("Failed to load images", error.message);
     }
-    return photos;
   };
 
   const getMockedPhotos = async () => {
@@ -42,7 +51,7 @@ const Home: NextPage = () => {
     setSearch(e.target.value);
   };
 
-  const handleSubmit = (e:any ) => {
+  const handleSubmit = (e: any) => {
     setSearch(e.target.value);
     // comment out and uncomment the following line to use the mocked api
     getPhotos();
