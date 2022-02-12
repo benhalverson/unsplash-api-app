@@ -1,5 +1,6 @@
-// import { ImagesProps } from "../types";
+
 import MyImage from "./image";
+import UserInfo from "./userInfo";
 
 const ImageList = ({ images }: any) => {
   return (
@@ -16,12 +17,17 @@ const ImageList = ({ images }: any) => {
               width={image.width}
               height={image.height}
             />
-            <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">
-              <a href={image.links.html} target="_blank" rel="noopener noreferrer">Link</a>
-            </p>
+
             <p className="block text-sm font-medium text-gray-500 pointer-events-none">
               {image.description}
             </p>
+          
+            <UserInfo
+              user={image.user.username}
+              bio={image.user.bio}
+              portfolioURL={image.user.portfolioURL}
+              twitterUsername={image.user.twitterUsername}
+            />
           </li>
         ))}
       </ul>
