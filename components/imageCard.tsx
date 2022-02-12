@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const MyImage = ({ src, alt }: Props) => {
+const ImageCard = ({ src, alt }: Props) => {
   return (
     <div className="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
       <Image
@@ -13,7 +13,7 @@ const MyImage = ({ src, alt }: Props) => {
     </div>
   );
 };
-export default MyImage;
+export default ImageCard;
 
 interface Props {
   src: string;

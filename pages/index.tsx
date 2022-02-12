@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import { useState } from "react";
 import axios from "axios";
 import ImageList from "../components/imageList";
-import Header from "../components/header";
 
 const Home: NextPage = () => {
   const [images, setImages] = useState<string[]>([]);

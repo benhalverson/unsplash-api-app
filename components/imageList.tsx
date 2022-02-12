@@ -1,5 +1,4 @@
-
-import MyImage from "./image";
+import ImageCard from './imageCard';
 import UserInfo from "./userInfo";
 
 const ImageList = ({ images }: any) => {
@@ -11,7 +10,7 @@ const ImageList = ({ images }: any) => {
       >
         {images.map((image: any) => (
           <li key={image.id} className="relative">
-            <MyImage
+            <ImageCard
               src={image.urls.small}
               alt={image.description}
               width={image.width}
