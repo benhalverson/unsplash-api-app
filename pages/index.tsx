@@ -43,8 +43,9 @@ const Home: NextPage = () => {
     setSearch(e.target.value);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e:any ) => {
     setSearch(e.target.value);
+    // comment out and uncomment the following line to use the mocked api
     getPhotos();
     // getMockedPhotos();
   };
