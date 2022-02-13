@@ -77,7 +77,7 @@ If the response is successful, it will set the state of the photos to the respon
 
 ```
 
-`images` is now an array of objects. We will pass this data into the `ImageList` component. where we will map over the array and return a `ImageCard` component for each object.
+`images` is now an object with a property that has an array of objects called results. We will pass this data into the `ImageList` component. where we will map over the array and return a `ImageCard` component for each object.
 
 ```tsx
 <ImageList images={images} />
