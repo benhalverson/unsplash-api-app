@@ -26,11 +26,11 @@ Once you have a key, add it to the `.env` file to use it in the app and add an A
 UNSPLASH_ACCESS_KEY=<your-api-key>
 ```
 Before building anything I like to use Postman to test the API. Here's a screenshot of how it looks:
-![postman](./postman.png"postman results")
+![postman](./postman.png "postman results")
 
 To do the search it expects a parameter called query. If you look in the network tab you can see the request looks like this: `https://api.unsplash.com/search/photos?query=dogs`
 
-![devtools](./chromeDevtools.png"devtools")
+![devtools](./chromeDevtools.png "devtools")
 
 
 Also in the network tab you can see that the request is a `get` request and has an authorization header. 
