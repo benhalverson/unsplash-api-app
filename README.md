@@ -12,7 +12,7 @@ yarn dev
 
 ## Deployed on codesandbox
 
-https://codesandbox.io/s/upbeat-voice-8t2eo
+https://codesandbox.io/s/unsplash-api-app-uw8o5
 
 ## Github
 
@@ -21,10 +21,12 @@ https://github.com/benhalverson/unsplash-api-app
 In this repo I built a simple search app using the unsplash API. In it we are using
 `https://api.unsplash.com/search/photos` as the endpoint. To use the API you need an API key which you can get from the [unsplash website](https://unsplash.com/developers).
 Once you have a key, add it to the `.env` file to use it in the app and add an Authorization header to the request.
+
 ```bash
 #.env
 UNSPLASH_ACCESS_KEY=<your-api-key>
 ```
+
 Before building anything I like to use Postman to test the API. Here's a screenshot of how it looks:
 ![postman](./postman.png "postman results")
 
@@ -32,11 +34,10 @@ To do the search it expects a parameter called query. If you look in the network
 
 ![devtools](./chromeDevtools.png "devtools")
 
-
-Also in the network tab you can see that the request is a `get` request and has an authorization header. 
+Also in the network tab you can see that the request is a `get` request and has an authorization header.
 Without the authorization header the request will not work.
 
-The response can be seen under preview or response. 
+The response can be seen under preview or response.
 The payload is your query param.
 
 In React you will need to use setState to set the query value.
@@ -51,30 +52,26 @@ The search button will call the function `handleSubmit` which will call `getPhot
 If the response is successful, it will set the state of the photos to the response.
 
 ```tsx
-    const getPhotos = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.unsplash.com/search/photos",
-        {
-          headers: {
-            Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
-          },
-          params: {
-            query: `${search}`,
-          },
-        }
-      );
-
-      const photos = response.data.results;
-      if (photos) {
-        setImages(photos);
+const getPhotos = async () => {
+  try {
+    const response = await axios.get("https://api.unsplash.com/search/photos", {
+      headers: {
+        Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`
+      },
+      params: {
+        query: `${search}`
       }
-      return photos;
-    } catch (error: any) {
-      console.error("Failed to load images", error.message);
-    }
-  };
+    });
 
+    const photos = response.data.results;
+    if (photos) {
+      setImages(photos);
+    }
+    return photos;
+  } catch (error) {
+    console.error("Failed to load images", error.message);
+  }
+};
 ```
 
 `images` is now an object with a property that has an array of objects called results. We will pass this data into the `ImageList` component. where we will map over the array and return a `ImageCard` component for each object.
